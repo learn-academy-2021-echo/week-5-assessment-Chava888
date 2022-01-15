@@ -194,7 +194,7 @@ describe("codedMessage", () => {
 /*
 Reformat by having implicit arrow functions 
 */
-const filterWords = (arrayOfWords, letter) => arrayOfWords.filter(value => value.includes(letter) || value.includes(letter.toUpperCase()))
+const filterWords = (arrayOfWords, letter) => arrayOfWords.filter(value => value.includes(letter.toLowerCase()) || value.includes(letter.toUpperCase()))
 
 
 
