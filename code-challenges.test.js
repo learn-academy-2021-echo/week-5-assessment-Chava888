@@ -94,12 +94,13 @@
 
 //Third Step: Refactor
 /*
-Reformat by having a codekeys object and only one terinary operator to check for key value pairs. Furthermore, changed the return in .map for a implicit arrow function.
+Reformat by having a object to represent the codeKeys and only one terinary operator to check for key value pairs. 
+Furthermore, changed the return in .map for a implicit arrow function.
 */
 
 const codedMessage = (string) => {
-    let codeKeys ={a:"4", e:"3", i:"1", o:"0"} 
-    return string.split("").map(value => codeKeys[value.toLowerCase()] ? codeKeys[value.toLowerCase()] : value).join("")     
+    let codeKeys ={a:4, e:3, i:1, o: 0} 
+    return string.split("").map(value => Object.hasOwn(codeKeys,value.toLowerCase()) ? codeKeys[value.toLowerCase()] : value).join("")     
 }
 
 
@@ -306,13 +307,13 @@ describe("filterWords", () => {
 
 //Third Step: Refactor
 /*
-Reformat by having terinary operators
+Reformat by having terinary operators and added a Object.hasOwn to check if property exists.
 */
 
 const fullHouse = (hand) => {
 
     let tracker = hand.reduce((uniqueValues, currentValue) => {
-        uniqueValues[currentValue] ? uniqueValues[currentValue] = uniqueValues[currentValue] + 1 : uniqueValues[currentValue] = 1;
+        Object.hasOwn(uniqueValues, currentValue) ? uniqueValues[currentValue] = uniqueValues[currentValue] + 1 : uniqueValues[currentValue] = 1;
         return uniqueValues
     },{})
 
